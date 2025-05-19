@@ -68,4 +68,10 @@ public class LeaveTypesService(ApplicationDbContext _context, IMapper _mapper) :
         var lowerCaseName = leaveTypeEdit.Name.ToLower();
         return await _context.LeaveTypes.AnyAsync(e => e.Name.ToLower().Equals(lowerCaseName) && e.Id != leaveTypeEdit.Id);
     }
+
+    public async Task<bool> DaysExceedMaximum (int leaveTypeId, int days)
+    {
+        var leaveType = await _context.LeaveTypes.FindAsync(leaveTypeId);
+        return leaveType.NumberOfDays < days;
+    }
 }

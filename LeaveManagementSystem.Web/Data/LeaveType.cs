@@ -8,5 +8,6 @@ namespace LeaveManagementSystem.Web.Data
         [MaxLength(100)]
         public string Name { get; set; }
         public int NumberOfDays { get; set; }
+        public List<LeaveAllocation>? LeaveAllocations { get; set; } 
     }
 }
